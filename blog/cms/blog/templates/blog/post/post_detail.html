@@ -6,6 +6,6 @@
 
         <h2>{{ post.title}}</h2>
         {{post.content|linebreaks}}
-        <p>Written by {{post.author}}</p>
+        <p>Written by {{post.author}} in <a href="{{posts.category.get_absolute_url}}">{{posts.category}}</a></p>
         <hr>
 {% endblock %}
