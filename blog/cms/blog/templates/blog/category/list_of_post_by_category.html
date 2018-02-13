@@ -1,13 +1,13 @@
 {% extends 'blog/base.html' %}
 
-{% block title %}list of post{% endblock %}
+{% block title %}{{ category.name }}{% endblock %}
 
 {% block content %}
-
-        {% for posts in post %}
+<h1>{{category.name}}</h1>    
+{% for posts in post %}
     <h2 style=" text-align:center;"><a href="{{posts.get_absolute_url}}">{{ posts.title}}</a></h2>
         {{posts.content|truncatewords:40|linebreaks}}
-        <p>Written by {{posts.author}} in <a href="{{post.category.get_absolute_url}}">{{posts.category}}</a></p>
+        <p>Written by {{posts.author}}</p>
         <hr>
 
     {% endfor %}
