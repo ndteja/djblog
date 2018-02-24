@@ -4,8 +4,20 @@
 
 {% block content %}
 
-        <h2>{{ post.title}}</h2>
+        <h1>{{ post.title}}</h1>
         {{post.content|linebreaks}}
-        <p>Written by {{post.author}} in <a href="{{posts.category.get_absolute_url}}">{{posts.category}}</a></p>
+        <p>Written by {{post.author}} in <strong>{{post.category}}</strong></p>
         <hr>
+        <h1>Leave a comment</h1>
+        <a href="{% url 'blog:add_comment' slug=post.slug %}">Comment</a>
+        <p>total number of comments are {{post.comments.count}}</p>
+        {% for comment in post.comments.all %}
+                <hr>
+                <p>{{comment.created}}</p>
+                <p>{{comment.user}} said: </p>
+                <p>{{comment.body}}</p>
+                
+        {%empty%}
+                <p>there are no comments</p>
+        {% endfor %}
 {% endblock %}
